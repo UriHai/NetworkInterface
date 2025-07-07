@@ -1,3 +1,7 @@
+"""
+This module contains Ethernet frame assembler
+"""
+
 from struct import pack
 
 from LinkLayer.Protocols.Ethernet.constants import ETHERNET_HEADERS_FORMAT
