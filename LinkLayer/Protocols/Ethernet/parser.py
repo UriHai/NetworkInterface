@@ -1,3 +1,7 @@
+"""
+This module contains the EthernetFrame class used to parse Ethernet frames
+"""
+
 from struct import unpack
 
 from LinkLayer.Protocols.Ethernet.constants import ETHERNET_HEADERS_FORMAT, ETHERNET_HEADERS_LENGTH
