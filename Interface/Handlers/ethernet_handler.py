@@ -1,6 +1,5 @@
 """This module contains the EthernetHandler class that can handle and send Ethernet frames"""
 
-from Interface.interface import Interface
 from LinkLayer.Identifiers.constants import BROADCAST_MAC
 from LinkLayer.Identifiers.mac_address import MACAddress
 from LinkLayer.Protocols.Ethernet.assembler import assemble_ethernet_frame
@@ -8,12 +7,12 @@ from LinkLayer.Protocols.Ethernet.parser import EthernetFrame
 
 
 class EthernetHandler:
-    def __init__(self, interface: Interface) -> None:
+    def __init__(self, interface) -> None:
         """
         Initialize EthernetHandler
         :param interface: The network interface that receives and sends frames
         """
-        self.interface: Interface = interface
+        self.interface = interface
 
     def send(self, dst_mac: MACAddress, protocol_type: int, payload: bytes) -> None:
         """
