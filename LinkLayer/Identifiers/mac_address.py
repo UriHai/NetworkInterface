@@ -1,6 +1,7 @@
 """
 This module contains a MACAddress class
 """
+from __future__ import annotations
 
 from typing import Union
 
@@ -20,3 +21,11 @@ class MACAddress:
         :return: Bytes representation of the MAC address
         """
         return bytes([int(byte, 16) for byte in mac.split(':')])
+
+    def __eq__(self, other: MACAddress) -> bool:
+        """
+        Compare MAC addresses
+        :param other: The MAC address to compare with
+        :return: True if the MAC addresses are the same, False otherwise
+        """
+        return self.mac == other.mac

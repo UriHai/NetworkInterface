@@ -3,6 +3,8 @@ This module contains the main logic for sending, receiving and handling frames
 """
 from scapy.all import conf, get_if_hwaddr
 
+from LinkLayer.Identifiers.mac_address import MACAddress
+
 
 class Interface:
     def __init__(self, name: str) -> None:
@@ -10,7 +12,7 @@ class Interface:
         Initialize network interface
         :param name: The interface name
         """
-        self.mac: str = get_if_hwaddr(name)
+        self.mac: MACAddress = MACAddress(get_if_hwaddr(name))
         self.sock: conf.L2socket = conf.L2socket(iface=name, promisc=True)
 
     def start(self) -> None:
