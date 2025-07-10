@@ -6,7 +6,7 @@ from typing import Union
 
 
 class IPAddress:
-    def __index__(self, ip: Union[str, bytes]) -> None:
+    def __init__(self, ip: Union[str, bytes]) -> None:
         """
         Initialize IP address
         :param ip: The address in string or bytes form

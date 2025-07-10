@@ -14,7 +14,14 @@ class EthernetFrame:
         Initialize Ethernet Frame
         :param buffer: Buffer containing raw bytes of the Ethernet frame
         """
+        headers: bytes
+        self.payload: bytes
         headers, self.payload = buffer[:ETHERNET_HEADERS_LENGTH], buffer[ETHERNET_HEADERS_LENGTH:]
+
+        dst: bytes
+        src: bytes
+        self.ethernet_type: int
         dst, src, self.ethernet_type = unpack(ETHERNET_HEADERS_FORMAT, headers)
+
         self.dst: MACAddress = MACAddress(dst)
         self.src: MACAddress = MACAddress(src)
