@@ -8,10 +8,14 @@ from typing import Union
 
 class MACAddress:
     def __init__(self, mac: Union[str, bytes]) -> None:
+        """
+        Initialize MAC address
+        :param mac: The address in string or bytes form
+        """
         if isinstance(mac, bytes):
-            self.mac = mac
+            self.mac: bytes = mac
         elif isinstance(mac, str):
-            self.mac = self._convert_mac_string_to_bytes(mac)
+            self.mac: bytes = self._convert_mac_string_to_bytes(mac)
 
     @staticmethod
     def _convert_mac_string_to_bytes(mac: str) -> bytes:
