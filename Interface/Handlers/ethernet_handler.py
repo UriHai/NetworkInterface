@@ -4,6 +4,7 @@ from LinkLayer.Identifiers.constants import BROADCAST_MAC
 from LinkLayer.Identifiers.mac_address import MACAddress
 from LinkLayer.Protocols.Ethernet.assembler import assemble_ethernet_frame
 from LinkLayer.Protocols.Ethernet.parser import EthernetFrame
+from LinkLayer.Protocols.Ethernet.constants import ETHER_TYPE_ARP
 
 
 class EthernetHandler:
@@ -32,6 +33,8 @@ class EthernetHandler:
         frame: EthernetFrame = EthernetFrame(payload)
         if not self._should_handle(frame):
             return
+        if frame.ethernet_type == ETHER_TYPE_ARP:
+            self.interface.arp_handler.handle(frame)
 
     def _should_handle(self, frame: EthernetFrame) -> bool:
         """

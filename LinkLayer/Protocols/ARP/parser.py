@@ -5,7 +5,7 @@ This module contains a parser for ARP frames
 from struct import unpack
 
 from LinkLayer.Identifiers.mac_address import MACAddress
-from LinkLayer.Protocols.ARP.constants import ARP_FORMAT
+from LinkLayer.Protocols.ARP.constants import ARP_FORMAT, ARP_LENGTH
 from NetworkLayer.Identifiers.ip_address import IPAddress
 
 
@@ -15,8 +15,7 @@ class ARPFrame:
         Initialize ARP Frame
         :param buffer: Buffer containing raw bytes of the ARP frame
         """
-        # buffer = buffer[:ARP_LENGTH] TODO: I had an issue in the previous version that I solved with this line.
-        #  Need to see if it recreates and understand it
+        buffer = buffer[:ARP_LENGTH]
         self.hardware_type: int
         self.protocol_type: int
         self.hardware_length: int
