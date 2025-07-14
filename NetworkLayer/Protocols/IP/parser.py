@@ -34,8 +34,10 @@ class IPPacket:
         self.ihl: int = version_ihl & IP_IHL_MASk
         self.dscp: int = dscp_ecn >> IP_DSCP_BITS_SHIFT
         self.ecn: int = dscp_ecn & IP_ECN_MASK
+
         self.src_ip: IPAddress = IPAddress(src_ip)
         self.dst_ip: IPAddress = IPAddress(dst_ip)
+
         self.options: Union[bytes, None] = None
         if self.ihl > IP_HEADERS_LENGTH:
             self.options = buffer[IP_HEADERS_LENGTH:self.ihl]
